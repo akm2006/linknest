@@ -41,7 +41,7 @@ useEffect(() => {
           <Link href="/">
             <Image
               alt="an image of a vector"
-              src={"/logo.svg"}
+              src={"/logo.png"}
               width={120}
               height={100}
               className="object-contain"

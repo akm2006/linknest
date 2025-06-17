@@ -1,9 +1,9 @@
 import React from "react";
-
+import Link from "next/link";
 import Image from "next/image";
 import FloatingCard from "./FloatingCard";
 import { RiInstagramFill } from "react-icons/ri";
-import { FaYoutube, FaSpotify, FaInstagram } from 'react-icons/fa';
+import { FaYoutube, FaSpotify } from 'react-icons/fa';
 const Hero = () => {
   return (
     <div className=" h-[200vh] bg-[#254F1A] pt-70 pb-40 px-20">
@@ -23,21 +23,21 @@ const Hero = () => {
               placeholder="linktr.ee/"
               className="px-6 py-6 w-[40%] bg-white rounded-md"
             />
-
+            <Link 
+            href= "/generate">
             <button
-              className=" bg-purple-300 rounded-full font-bold px-8 py-5 shadow-lg"
-            >
+              className=" bg-purple-300 rounded-full font-bold px-8 py-5 shadow-lg">
               Claim your Linktree
             </button>
+            </Link>
+            
           </div>
         </div>
 
 <div className="relative w-[45%] text-amber-950 flex items-center justify-center bg-transparent [perspective:1000px]">
   <FloatingCard
   sensitivity={30}
-  className="absolute z-0 w-52 h-52 bg-[url(/card/disc.webp)] bg-center bg-cover rounded-full shadow-2xl -top-2 -right-0"
-
-/>
+  className="absolute z-0 w-52 h-52 bg-[url(/card/disc.webp)] bg-center bg-cover rounded-full shadow-2xl -top-2 -right-0"/>
 <FloatingCard
   sensitivity={30}
   className="absolute z-20 w-52 h-52 bg-[url(/card/song.webp)] bg-center bg-cover rounded-xl shadow-2xl bottom-[15%] left-[10%]"
