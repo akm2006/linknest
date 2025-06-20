@@ -1,10 +1,23 @@
+"use client"
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import FloatingCard from "./FloatingCard";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaYoutube, FaSpotify } from 'react-icons/fa';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 const Hero = () => {
+    
+const router = useRouter()
+const [text, settext] = useState("")
+  const createNest = () =>
+  {
+    
+    router.push(`/generate?handle=${text}`)
+  }
+  
   return (
     <div className=" h-[200vh] bg-[#254F1A] pt-70 pb-40 px-20">
       <div className=" flex justify-between">
@@ -19,17 +32,20 @@ const Hero = () => {
           </span>
           <div className="flex gap-3">
             <input
+              onChange={(e)=> settext(e.target.value)}
               type="text"
-              placeholder="linktr.ee/"
+              placeholder="linknest/"
               className="px-6 py-6 w-[40%] bg-white rounded-md"
             />
-            <Link 
-            href= "/generate">
+            
+            
             <button
+              onClick={createNest}
+              value={text}
               className=" bg-purple-300 rounded-full font-bold px-8 py-5 shadow-lg">
-              Claim your Linktree
+              Claim your Linknest
             </button>
-            </Link>
+            
             
           </div>
         </div>
