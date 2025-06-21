@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { usePathname } from "next/navigation";
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
-
+const pathname = usePathname()
+const showNavbar = ["/" ,"/generate"].includes(pathname)
 useEffect(() => {
   let lastScrollY = window.scrollY;
 
@@ -28,9 +29,9 @@ useEffect(() => {
   window.addEventListener('scroll', handleScroll, { passive: true });
   return () => window.removeEventListener('scroll', handleScroll);
 }, []);
-
+if (!showNavbar) return null;
   return (
-    <div>
+    
       <nav
         className={`w-[90vw] h-23 top-12 left-1/2 transform justify-between items-center -translate-x-1/2 rounded-full fixed z-50 flex bg-white
         transition-transform duration-200 ease-in-out will-change-transform
@@ -69,7 +70,7 @@ useEffect(() => {
           </Link>
         </div>
       </nav>
-    </div>
+   
   );
 };
 

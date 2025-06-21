@@ -8,10 +8,12 @@ import { ToastContainer, toast } from "react-toastify";
 import { useSearchParams } from "next/navigation";
 const Generate = () => {
   const searchParams = useSearchParams()
-  // const [link, setlink] = useState("")
-  // const [linktext, setlinktext] = useState("")
-  const [links, setlinks] = useState([{link: "" , linktext: ""}])
-const [handle, sethandle] = useState(searchParams.get("handle") ?? "");  const [pic, setpic] = useState("")
+  
+const [handle, sethandle] = useState(searchParams.get("handle") ?? ""); 
+ const [pic, setpic] = useState("")
+ const [links, setlinks] = useState([{link: "" , linktext: ""}])
+ const [desc, setdesc] = useState("")
+ 
  const handleChange = (index, field, value) => {
   setlinks((prevLinks) =>
     prevLinks.map((item, i) => {
@@ -32,10 +34,11 @@ const [handle, sethandle] = useState(searchParams.get("handle") ?? "");  const [
   const payload = {
     handle: handle,
     pic: pic,
-    links: links  // Send the array of all links
+    links: links,
+    desc: desc  
   };
 
-  console.log("Submitting payload:", payload); // This will now show
+  console.log("Submitting payload:", payload); 
 
   const requestOptions = {
     method: "POST",
@@ -54,6 +57,7 @@ const [handle, sethandle] = useState(searchParams.get("handle") ?? "");  const [
     setlinks([])
     setpic([])
     sethandle([])
+    setdesc([])
     }
     else{
       toast.error(result.message)
@@ -119,13 +123,20 @@ const [handle, sethandle] = useState(searchParams.get("handle") ?? "");  const [
             </div>
             <div className=" flex flex-col gap-3">
               <h1 className="{inter.className} text-[#E9C0E9] text-2xl font-bold">
-                Step3: Add picture
+                Step3: Add picture & Description
               </h1>
               <input
                 onChange = {e=>{setpic(e.target.value)}}
                 value = {pic}
                 type="text"
                 placeholder="Enter link to your picture"
+                className="p-3 w-full bg-white focus:outline-purple-600 rounded-full "
+              />
+              <input
+                onChange = {e=>{setdesc(e.target.value)}}
+                value = {desc}
+                type="text"
+                placeholder="Enter description of your handle"
                 className="p-3 w-full bg-white focus:outline-purple-600 rounded-full "
               />
             </div>
