@@ -1,6 +1,8 @@
 'use client';
 import Generate from './Generate';
 
-export default function GenerateClient() {
+const GenerateClient = () => {
   return <Generate />;
-}
+};
+
+export default GenerateClient;
