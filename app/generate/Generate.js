@@ -237,7 +237,7 @@ const Generate = () => {
                 </button>
                 <button
                   onClick={() =>
-                    window.open(`http://localhost:3000/${formattedHandle}`, "_blank")
+                    window.open(`${process.env.NEXT_PUBLIC_HOST}/${formattedHandle}`, "_blank")
                   }
                   className="rounded-md w-[50%] bg-gray-200 px-4 py-2 text-black hover:bg-gray-400 m-4 font-bold transition ease-in-out duration-300 "
                 >

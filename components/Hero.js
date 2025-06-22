@@ -20,13 +20,13 @@ const [text, settext] = useState("")
   
   return (
     <div className=" h-[200vh] bg-[#254F1A] pt-70 pb-40 px-20">
-      <div className=" flex justify-between">
+      <div className=" flex flex-col sm:flex-row justify-between">
         <div className="  flex flex-col w-[55%] p-0  {inter.className}  ">
           <span className=" text-[5rem] leading-none font-extrabold text-[#D2E823] pb-5">
             Everything you are. In one,<br></br> simple link in bio.
           </span>
           <span className="text-xl text-white font-semibold pb-10">
-            Join 70M+ people using Linktree for their link in bio. One link to
+            Join people using Linknest for their link in bio. One link to
             help you share everything you create, curate and sell from your
             Instagram, TikTok, Twitter, YouTube and other social media profiles.
           </span>
@@ -50,7 +50,7 @@ const [text, settext] = useState("")
           </div>
         </div>
 
-<div className="relative w-[45%] text-amber-950 sm:flex items-center justify-center bg-transparent [perspective:1000px] hidden">
+<div className="relative w-[45%] text-amber-950 sm:h-[50vh] h-20 flex items-center justify-center bg-transparent [perspective:1000px]">
   <FloatingCard
   sensitivity={30}
   className="absolute z-0 w-52 h-52 bg-[url(/card/disc.webp)] bg-center bg-cover rounded-full shadow-2xl -top-2 -right-0"/>
