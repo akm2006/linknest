@@ -35,7 +35,7 @@ const Generate = () => {
   const addLink = () => {
     setlinks(links.concat([{ link: "", linktext: "" }]));
   };
-  const formattedHandle = handle.trim().replace(/\s+/g, "_").replace(/[^a-zA-Z0-9-]/g, "");
+  const formattedHandle = handle.trim().replace(/\s+/g, "_").replace(/[^a-zA-Z0-9-_]/g, "");
   const submitLinks = async () => {
     const payload = {
       handle: formattedHandle,
