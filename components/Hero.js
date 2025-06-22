@@ -50,7 +50,7 @@ const [text, settext] = useState("")
           </div>
         </div>
 
-<div className="relative w-[45%] text-amber-950 flex items-center justify-center bg-transparent [perspective:1000px]">
+<div className="relative w-[45%] text-amber-950 sm:flex items-center justify-center bg-transparent [perspective:1000px] hidden">
   <FloatingCard
   sensitivity={30}
   className="absolute z-0 w-52 h-52 bg-[url(/card/disc.webp)] bg-center bg-cover rounded-full shadow-2xl -top-2 -right-0"/>
