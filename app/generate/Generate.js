@@ -74,7 +74,7 @@ const Generate = () => {
   };
 
   return (
-    <div className=" bg-[#780016] min-h-screen px-30 py-40">
+    <div className=" bg-[#780016] min-h-screen w-screen px-30 py-40">
       <ToastContainer theme="dark" />
       <h1 className="{inter.className} text-[#E9C0E9] text-6xl mb-4 font-extrabold">
         Create your LinkNest
