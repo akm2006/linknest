@@ -3,10 +3,31 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { HiMiniBars3 } from "react-icons/hi2";
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
 const pathname = usePathname()
 const showNavbar = ["/" ,"/generate"].includes(pathname)
+const [isOpen, setIsOpen] = useState(false);
+
+const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+    
+  } else {
+    document.body.style.overflow = "";
+  
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+    
+  };
+}, [isOpen]);
 useEffect(() => {
   let lastScrollY = window.scrollY;
 
@@ -29,27 +50,35 @@ useEffect(() => {
   window.addEventListener('scroll', handleScroll, { passive: true });
   return () => window.removeEventListener('scroll', handleScroll);
 }, []);
+
 if (!showNavbar) return null;
   return (
-    
+      <div>
       <nav
-        className={`w-[90vw] h-23 top-12 left-1/2 transform justify-between items-center -translate-x-1/2 rounded-full fixed z-50 flex bg-white
+        className={`w-[90vw] sm:h-23 h-16 px-6 sm:top-12 top-6 left-1/2 transform justify-between items-center -translate-x-1/2 rounded-full fixed z-50 flex bg-white
         transition-transform duration-200 ease-in-out will-change-transform
         ${isVisible ? 'translate-y-0' : '-translate-y-[calc(100%+3rem)]'}
         `}
       >
-        <div className="flex mx-15">
+        <div className="flex sm:mx-15 mx-0">
           <Link href="/">
             <Image
               alt="an image of a vector"
               src={"/logo.png"}
               width={120}
               height={100}
-              className="object-contain"
+              className="object-contain sm:flex hidden"
+            />
+            <Image
+              alt="an image of a vector"
+              src={"/mlogo.png"}
+              width={14}
+              height={14}
+              className="object-contain sm:hidden flex"
             />
           </Link>
 
-          <ul className="flex mx-14 gap-8 font-medium">
+          <ul className="sm:flex hidden mx-14 gap-8 font-medium">
             <Link href="/"><li>Products</li></Link>
             <Link href="/"><li>Templates</li></Link>
             <Link href="/"><li>Marketplace</li></Link>
@@ -57,19 +86,40 @@ if (!showNavbar) return null;
             <Link href="/"><li>Pricing</li></Link>
           </ul>
         </div>
-        <div className="flex gap-3 font-bold mx-6">
+        <div className="flex items-center gap-3 sm:text-base text-xs sm:font-bold font-medium sm:mx-6">
           <Link href="/">
-            <button className="bg-gray-200 hover:bg-gray-300 transition ease-in-out duration-300 rounded-xl font-bold px-8 py-5 shadow-lg">
+            <button className="bg-gray-200 hover:bg-gray-300 transition ease-in-out duration-300 rounded-xl sm:px-8 sm:py-5 px-4 py-3 shadow-lg">
               Log in
             </button>
           </Link>
           <Link href="/">
-            <button className="bg-gray-800 hover:bg-gray-700 transition ease-in-out duration-300 text-white rounded-full px-8 py-5 shadow-lg">
+            <button className="bg-gray-800 hover:bg-gray-700 transition ease-in-out duration-300 text-white rounded-full sm:px-8 sm:py-5 px-4 py-3 shadow-lg">
               Sign up free
             </button>
           </Link>
+          <HiMiniBars3 className="size-6 sm:hidden flex" onClick={toggleSidebar}/>
+
         </div>
+
+
+         
+                   
+
       </nav>
+       <div className={`bg-white fixed z-2 h-screen w-screen pt-[40%] sm:hidden scroll-0 flex transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
+        }`}> 
+
+         
+          <ul className=" flex flex-col mx-2 w-full font-bold font-mono text-lg">
+            <Link href="/" ><li className="w-full h-15 border-b-2 border-gray-200 p-3">Products</li></Link>
+            <Link href="/"><li className="w-full h-15 border-b-2 border-gray-200 p-3">Templates</li></Link>
+            <Link href="/"><li className="w-full h-15 border-b-2 border-gray-200 p-3">Marketplace</li></Link>
+            <Link href="/"><li className="w-full h-15 border-b-2 border-gray-200 p-3">Learn</li></Link>
+            <Link href="/"><li className="w-full h-15 border-b-2 border-gray-200 p-3">Pricing</li></Link>
+          </ul>
+
+       </div>
+      </div>
    
   );
 };

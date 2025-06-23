@@ -19,10 +19,10 @@ const [text, settext] = useState("")
   }
   
   return (
-    <div className=" h-[200vh] bg-[#254F1A] pt-70 pb-40 px-20">
+    <div className=" h-[200vh] max-w-100vw bg-[#254F1A] sm:pt-70 pb-40 sm:px-20 px-5 ">
       <div className=" flex flex-col sm:flex-row justify-between">
         <div className="  flex flex-col w-[55%] p-0  {inter.className}  ">
-          <span className=" text-[5rem] leading-none font-extrabold text-[#D2E823] pb-5">
+          <span className=" sm:text-[5rem] text-2xl leading-none font-extrabold text-[#D2E823] pb-5">
             Everything you are. In one,<br></br> simple link in bio.
           </span>
           <span className="text-xl text-white font-semibold pb-10">
