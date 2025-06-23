@@ -7,6 +7,9 @@ import { FaYoutube, FaSpotify } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchParams } from "next/navigation";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 const Generate = () => {
   const searchParams = useSearchParams();
 
@@ -74,123 +77,115 @@ const Generate = () => {
   };
 
   return (
-    <div className=" bg-[#780016] min-h-screen w-screen px-30 py-40">
+<div className="bg-[#780016] min-h-screen max-w-screen px-4 sm:px-10 md:px-20 py-[12vh] sm:py-[18vh] md:py-[23vh]">
       <ToastContainer theme="dark" />
-      <h1 className="{inter.className} text-[#E9C0E9] text-6xl mb-4 font-extrabold">
-        Create your LinkNest
+      <h1 className={`${inter.className} text-[#E9C0E9] text-4xl sm:text-5xl md:text-6xl mb-4 font-extrabold text-center sm:text-left`}>
+  Create your LinkNest
+</h1>
+
+<div className="mt-4 px-4 sm:px-5 flex flex-col sm:flex-row justify-between">
+  <div className="flex flex-col gap-10 sm:w-[50%] w-full">
+    <div className="flex flex-col gap-6">
+      <h1 className={`${inter.className} text-[#E9C0E9] text-xl sm:text-2xl font-bold`}>
+        Step1: Claim your handle
       </h1>
-      <div className=" mt-4 px-5 flex justify-between">
-        <div className="flex w-[50%] gap-10 flex-col">
-          <div className=" flex flex-col gap-6">
-            <h1 className="{inter.className} text-[#E9C0E9] text-2xl font-bold">
-              Step1: Claim your handle
-            </h1>
-            <div className="flex">
-              {" "}
+      <div className="flex">
+        <input
+          onChange={(e) => sethandle(e.target.value)}
+          value={handle}
+          type="text"
+          placeholder="Enter your handle"
+          className="p-3 w-full bg-white focus:outline-purple-600 rounded-full max-w-full sm:max-w-[60%]"
+        />
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <h1 className={`${inter.className} text-[#E9C0E9] text-xl sm:text-2xl font-bold`}>
+          Step2: Add your Links
+        </h1>
+
+        {links &&
+          links.map((item, index) => (
+            <div key={index} className="flex flex-col sm:flex-row gap-2">
               <input
-                onChange={(e) => {
-                  sethandle(e.target.value);
-                }}
-                value={handle}
+                onChange={(e) => handleChange(index, "linktext", e.target.value)}
+                value={item.linktext}
                 type="text"
-                placeholder="Enter your handle"
-                className="p-3 w-full bg-white focus:outline-purple-600 rounded-full max-w-[60%] "
-              />
-            </div>
-            <div className=" flex flex-col gap-3">
-              <h1 className="{inter.className} text-[#E9C0E9] text-2xl font-bold">
-                Step2: Add your Links
-              </h1>
-              {links &&
-                links.map((item, index) => {
-                  return (
-                    <div key={index} className="flex gap-2">
-                      <input
-                        onChange={(e) =>
-                          handleChange(index, "linktext", e.target.value)
-                        }
-                        value={item.linktext}
-                        type="text"
-                        placeholder="Enter link text"
-                        className="p-3 w-[30%] bg-white focus:outline-purple-600 rounded-full  "
-                      />
-                      <input
-                        onChange={(e) =>
-                          handleChange(index, "link", e.target.value)
-                        }
-                        value={item.link}
-                        type="text"
-                        placeholder="Enter your link"
-                        className="p-3 bg-white focus:outline-purple-600 rounded-full w-[50%] "
-                      />
-                    </div>
-                  );
-                })}
-              <button
-                onClick={() => addLink()}
-                className=" bg-[#E9C0E9] hover:bg-[#be90be] hover:text-white w-[20%] mx-1 py-3 transition ease-in-out font-bold duration-300 text-black rounded-full shadow-lg"
-              >
-                Add Link +
-              </button>
-            </div>
-            <div className=" flex flex-col gap-3">
-              <h1 className="{inter.className} text-[#E9C0E9] text-2xl font-bold">
-                Step3: Add picture & Description
-              </h1>
-              <input
-                onChange={(e) => {
-                  setpic(e.target.value);
-                }}
-                value={pic}
-                type="text"
-                placeholder="Enter URL of your picture"
-                className="p-3 w-[80%] bg-white focus:outline-purple-600 rounded-full "
+                placeholder="Enter link text"
+                className="p-3 w-full sm:w-[30%] bg-white focus:outline-purple-600 rounded-full"
               />
               <input
-                onChange={(e) => {
-                  setdesc(e.target.value);
-                }}
-                value={desc}
+                onChange={(e) => handleChange(index, "link", e.target.value)}
+                value={item.link}
                 type="text"
-                placeholder="Enter description of your handle(Optional)"
-                className="p-3 w-full bg-white focus:outline-purple-600 rounded-full "
+                placeholder="Enter your link"
+                className="p-3 w-full sm:w-[50%] bg-white focus:outline-purple-600 rounded-full"
               />
             </div>
-            <button
-              disabled={pic == "" || handle == "" || links[0].linktext == ""}
-              onClick={submitLinks}
-              className="disabled:bg-gray-400/50 disabled:text-black/30 disabled:cursor-not-allowed
-             bg-[#E9C0E9] hover:bg-[#be90be] transition ease-in-out hover:text-white
-             font-bold duration-300 text-black rounded-full px-8 py-5 shadow-lg  "
-            >
-              Claim for free
-            </button>
-          </div>
-        </div>
-        <div className="relative w-[45%] h-[80vh] text-amber-950 flex items-center justify-center bg-transparent [perspective:1000px]">
+          ))}
+
+        <button
+          onClick={() => addLink()}
+          className="bg-[#E9C0E9] hover:bg-[#be90be] hover:text-white w-full sm:w-[40%] md:w-[20%] mx-1 py-3 transition ease-in-out font-bold duration-300 text-black rounded-full shadow-lg"
+        >
+          Add Link +
+        </button>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <h1 className={`${inter.className} text-[#E9C0E9] text-xl sm:text-2xl font-bold`}>
+          Step3: Add picture & Description
+        </h1>
+        <input
+          onChange={(e) => setpic(e.target.value)}
+          value={pic}
+          type="text"
+          placeholder="Enter URL of your picture"
+          className="p-3 w-full bg-white focus:outline-purple-600 rounded-full"
+        />
+        <input
+          onChange={(e) => setdesc(e.target.value)}
+          value={desc}
+          type="text"
+          placeholder="Enter description of your handle (Optional)"
+          className="p-3 w-full bg-white focus:outline-purple-600 rounded-full"
+        />
+      </div>
+
+      <button
+        disabled={pic === "" || handle === "" || links[0].linktext === ""}
+        onClick={submitLinks}
+        className="disabled:bg-gray-400/50 disabled:text-black/30 disabled:cursor-not-allowed bg-[#E9C0E9] hover:bg-[#be90be] transition ease-in-out hover:text-white font-bold duration-300 text-black rounded-full px-6 sm:px-8 py-4 sm:py-5 shadow-lg w-full sm:w-auto"
+      >
+        Claim for free
+      </button>
+    </div>
+  </div>
+
+<div className="relative sm:w-[45%] w-full h-[50vh] text-amber-950 sm:h-[90vh] border-2 flex items-center justify-center bg-transparent [perspective:1000px]">
           <FloatingCard
             sensitivity={30}
-            className="absolute z-0 w-52 h-32 bg-[url(/card/camera.webp)] bg-center bg-cover -top-2 right-5"
+  className="absolute z-0 h-[20%] w-[30%] bg-[url(/card/camera.webp)] bg-center bg-cover top-[10%] right-[5%]"/>
+          
+          <FloatingCard
+            sensitivity={30}
+  className="absolute z-20 w-[40%] h-[25%] bg-[url(/card/song2.webp)] bg-center bg-cover rounded-3xl shadow-2xl bottom-[30%] left-[10%]"
           />
           <FloatingCard
             sensitivity={30}
-            className="absolute z-20 w-60 h-40 bg-[url(/card/song2.webp)] bg-center bg-cover rounded-xl shadow-2xl top-[40%] left-[5%]"
-          />
-          <FloatingCard
-            sensitivity={30}
-            className="absolute z-20 rounded-xl bottom-[15%] right-[15%]"
+  className="absolute z-20 rounded-xl bottom-[30%] right-[15%]"
           >
-            <div className="flex gap-2">
-              <button className=" h-8 w-8 flex items-center justify-center bg-[#E9C0E9] rounded-full">
-                <FaSpotify size={20} />
-              </button>
-              <button className=" h-8 w-8 flex items-center justify-center bg-[#E9C0E9] rounded-full">
-                <FaYoutube size={20} />
-              </button>
-              <button className=" h-8 w-8 flex items-center justify-center bg-[#E9C0E9] rounded-full">
-                <RiInstagramFill size={20} />
-              </button>
-            </div>
+            <div className="flex gap-[0.8vw] sm:gap-2">
+                <button className="w-[3vw] h-[3vw] min-w-[36px] min-h-[36px] sm:w-10 sm:h-10 flex items-center justify-center bg-[#E9C0E9] rounded-full">
+                  <FaSpotify className="w-[50%] h-[50%]" />
+                </button>
+                <button className="w-[3vw] h-[3vw] min-w-[36px] min-h-[36px] sm:w-10 sm:h-10 flex items-center justify-center bg-[#E9C0E9] rounded-full">
+                  <FaYoutube className="w-[50%] h-[50%]" />
+                </button>
+                <button className="w-[3vw] h-[3vw] min-w-[36px] min-h-[36px] sm:w-10 sm:h-10 flex items-center justify-center bg-[#E9C0E9] rounded-full">
+                  <RiInstagramFill className="w-[50%] h-[50%]" />
+                </button>
+              </div>
           </FloatingCard>
           <FloatingCard
             sensitivity={40}
@@ -201,18 +196,17 @@ const Generate = () => {
               width={80}
               height={80}
               alt="Profile"
-              className="rounded-full"
-            />
+className="rounded-full object-cover w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"            />
 
-            <div className="flex flex-col items-center align-center gap-2 absolute top-[30%]">
-              <button className="bg-[#E9C0E9] rounded-full text-xs w-[12rem] py-2 shadow-lg">
+            <div className="flex flex-col w-[100%] font-medium items-center gap-2 absolute top-[35%]">
+      <button className="bg-[#E9C0E9] rounded-full text-[2.4vw] sm:text-xs md:text-sm w-[90%] py-[1vw] shadow-lg">
                 Autum Collection
               </button>
-              <button className="bg-[#E9C0E9] rounded-full text-xs w-[12rem] py-2 shadow-lg">
+              
+      <button className="bg-[#E9C0E9] rounded-full text-[2.4vw] sm:text-xs md:text-sm w-[90%] py-[1vw] shadow-lg">
                 Latest additions
               </button>
-              <button className="bg-[#E9C0E9] rounded-full text-xs w-[12rem] py-2 shadow-lg">
-                Podcast
+<button className="bg-[#E9C0E9] rounded-full text-[2.4vw] sm:text-xs md:text-sm w-[90%] py-[1vw] shadow-lg">                Podcast
               </button>
             </div>
           </FloatingCard>
