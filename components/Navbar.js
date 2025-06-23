@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiMiniBars3 } from "react-icons/hi2";
+import { Sling as Hamburger } from 'hamburger-react';
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
 const pathname = usePathname()
@@ -26,7 +27,7 @@ const toggleSidebar = () => {
   return () => {
     document.body.style.overflow = "";
     
-  };
+  }
 }, [isOpen]);
 useEffect(() => {
   let lastScrollY = window.scrollY;
@@ -97,7 +98,10 @@ if (!showNavbar) return null;
               Sign up free
             </button>
           </Link>
-          <HiMiniBars3 className="size-6 sm:hidden flex" onClick={toggleSidebar}/>
+
+         <div className={`block ${isOpen? "bg-[#d2e823]":"bg-transparent"} rounded-full  sm:hidden`}>
+          <Hamburger toggled={isOpen} toggle={setIsOpen} size={20} /></div>
+
 
         </div>
 
