@@ -19,7 +19,7 @@ const [text, settext] = useState("")
   }
   
   return (
-    <div className=" min-h-[200vh] max-w-100vw bg-[#254F1A]  sm:px-20 px-4 ">
+    <div className=" min-h-[150vh] max-w-100vw bg-[#254F1A]  sm:px-20 px-4 ">
       <div className=" flex flex-col sm:flex-row justify-between">
         <div className="  flex flex-col sm:mt-70 mt-[40vw] sm:w-[52%] w-full {inter.className}  ">
           <span className=" sm:text-[5rem] break-words text-[10vw] leading-none font-black text-[#D2E823] pb-5">
@@ -52,10 +52,10 @@ const [text, settext] = useState("")
 
 <div className="relative sm:w-[45%] w-full h-[50vh] text-amber-950 sm:mt-50 mt-[10vw] sm:h-[90vh] border-0 flex items-center justify-center bg-transparent [perspective:1000px]">
   <FloatingCard
-  sensitivity={40}
+  sensitivity={30}
   className="absolute z-0 size-[33%] bg-[url(/card/disc.webp)] bg-center bg-cover rounded-full shadow-2xl top-[20%] right-[5%]"/>
 <FloatingCard
-  sensitivity={40}
+  sensitivity={30}
   className="absolute z-20 w-[30%] h-[30%] bg-[url(/card/song.webp)] bg-center bg-cover rounded-3xl shadow-2xl bottom-[20%] left-[15%]"
 />
 <FloatingCard
@@ -76,7 +76,7 @@ const [text, settext] = useState("")
 </FloatingCard>
 
   <FloatingCard
-    sensitivity={40}
+    sensitivity={30}
     className="absolute z-10 w-[45%] sm:w-[40%] h-[100%] sm:h-[35vw] bg-[url(/card/card1.webp)] bg-center bg-cover rounded-3xl p-[2vw] shadow-2xl flex flex-col items-center"
   >
     <Image
