@@ -84,7 +84,7 @@ const [text, settext] = useState("")
       width={100}
       height={100}
       alt="Profile"
-      className="rounded-full object-cover w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
+      className=" absolute top-[8%] rounded-full object-cover w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24%"
     />
 
     <div className="flex flex-col w-[100%] font-medium items-center gap-2 absolute top-[35%]">

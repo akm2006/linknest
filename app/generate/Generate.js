@@ -77,15 +77,16 @@ const Generate = () => {
   };
 
   return (
-<div className="bg-[#780016] min-h-screen max-w-screen px-4 sm:px-10 md:px-20 py-[12vh] sm:py-[18vh] md:py-[23vh]">
+<div className="bg-[#780016] min-h-screen max-w-screen px-4 sm:px-10 md:px-20 py-[10vh] sm:py-[16vh] md:py-[21vh]">
       <ToastContainer theme="dark" />
-      <h1 className={`${inter.className} text-[#E9C0E9] text-4xl sm:text-5xl md:text-6xl mb-4 font-extrabold text-center sm:text-left`}>
-  Create your LinkNest
-</h1>
+      
 
 <div className="mt-4 px-4 sm:px-5 flex flex-col sm:flex-row justify-between">
   <div className="flex flex-col gap-10 sm:w-[50%] w-full">
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col border-0 gap-6">
+      <h1 className={`${inter.className} text-[#E9C0E9] text-4xl sm:text-5xl md:text-6xl mb-4 font-extrabold text-center sm:text-left`}>
+  Create your LinkNest
+</h1>
       <h1 className={`${inter.className} text-[#E9C0E9] text-xl sm:text-2xl font-bold`}>
         Step1: Claim your handle
       </h1>
@@ -162,41 +163,42 @@ const Generate = () => {
     </div>
   </div>
 
-<div className="relative sm:w-[45%] w-full h-[50vh] text-amber-950 sm:h-[90vh] border-2 flex items-center justify-center bg-transparent [perspective:1000px]">
+<div className="relative sm:w-[45%] w-full h-[50vh] text-amber-950 sm:mt-0 mt-[10vw] sm:h-[90vh] border-0 flex items-center justify-center bg-transparent [perspective:1000px]">
           <FloatingCard
             sensitivity={30}
-  className="absolute z-0 h-[20%] w-[30%] bg-[url(/card/camera.webp)] bg-center bg-cover top-[10%] right-[5%]"/>
+  className="absolute z-0 h-[20%] w-[35%] bg-[url(/card/camera.webp)] bg-center bg-cover top-[5%] right-[6%]"/>
           
           <FloatingCard
             sensitivity={30}
-  className="absolute z-20 w-[40%] h-[25%] bg-[url(/card/song2.webp)] bg-center bg-cover rounded-3xl shadow-2xl bottom-[30%] left-[10%]"
+  className="absolute z-20 w-[35%] h-[20%] bg-[url(/card/song2.webp)] bg-center bg-cover rounded-xl shadow- bottom-[30%] left-[10%]"
           />
           <FloatingCard
             sensitivity={30}
-  className="absolute z-20 rounded-xl bottom-[30%] right-[15%]"
+  className="absolute z-20 rounded-2xl bottom-[30%] right-[15%]"
           >
             <div className="flex gap-[0.8vw] sm:gap-2">
-                <button className="w-[3vw] h-[3vw] min-w-[36px] min-h-[36px] sm:w-10 sm:h-10 flex items-center justify-center bg-[#E9C0E9] rounded-full">
+                <button className="w-[3vw] h-[3vw] min-w-[32px] min-h-[32px] sm:w-10 sm:h-10 flex items-center justify-center bg-[#E9C0E9] rounded-full">
                   <FaSpotify className="w-[50%] h-[50%]" />
                 </button>
-                <button className="w-[3vw] h-[3vw] min-w-[36px] min-h-[36px] sm:w-10 sm:h-10 flex items-center justify-center bg-[#E9C0E9] rounded-full">
+                <button className="w-[3vw] h-[3vw] min-w-[32px] min-h-[32px] sm:w-10 sm:h-10 flex items-center justify-center bg-[#E9C0E9] rounded-full">
                   <FaYoutube className="w-[50%] h-[50%]" />
                 </button>
-                <button className="w-[3vw] h-[3vw] min-w-[36px] min-h-[36px] sm:w-10 sm:h-10 flex items-center justify-center bg-[#E9C0E9] rounded-full">
+                <button className="w-[3vw] h-[3vw] min-w-[32px] min-h-[32px] sm:w-10 sm:h-10 flex items-center justify-center bg-[#E9C0E9] rounded-full">
                   <RiInstagramFill className="w-[50%] h-[50%]" />
                 </button>
               </div>
           </FloatingCard>
           <FloatingCard
             sensitivity={40}
-            className="absolute z-10 w-60 h-120 bg-[url(/card/card2.webp)] bg-center bg-cover rounded-2xl p-5 shadow-2xl flex flex-col items-center"
+            className="absolute z-10 w-[50%] sm:w-[40%] h-[100%] sm:h-[32vw] bg-[url(/card/card2.webp)] bg-center bg-cover rounded-3xl p-[2vw] shadow-2xl flex flex-col items-center"
           >
             <Image
-              src="/card/user2.webp"
-              width={80}
-              height={80}
-              alt="Profile"
-className="rounded-full object-cover w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"            />
+                  src="/card/user2.webp"
+                  width={100}
+                  height={100}
+                  alt="Profile"
+      className=" absolute top-[6%] rounded-full object-cover w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24%"
+                />
 
             <div className="flex flex-col w-[100%] font-medium items-center gap-2 absolute top-[35%]">
       <button className="bg-[#E9C0E9] rounded-full text-[2.4vw] sm:text-xs md:text-sm w-[90%] py-[1vw] shadow-lg">
