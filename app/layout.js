@@ -1,8 +1,15 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-
-
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+import { dark,shadesOfPurple,neobrutalism} from '@clerk/themes'
 
 
 const geistSans = Geist({
@@ -22,6 +29,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+      <ClerkProvider
+      appearance={{
+        baseTheme: neobrutalism,
+      }}
+    >
     <html lang="en">
       <body
       
@@ -30,6 +42,6 @@ export default function RootLayout({ children }) {
         <Navbar/>
         {children}
       </body>
-    </html>
+    </html></ClerkProvider>
   );
 }

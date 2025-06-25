@@ -7,9 +7,8 @@ import { RiInstagramFill } from "react-icons/ri";
 import { FaYoutube, FaSpotify } from 'react-icons/fa';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
-const Hero = () => {
-    
+import { useUser, SignUpButton } from "@clerk/nextjs";const Hero = () => {
+  const { isSignedIn } = useUser();  
 const router = useRouter()
 const [text, settext] = useState("")
   const createNest = () =>
@@ -38,13 +37,22 @@ const [text, settext] = useState("")
               className="px-4 w-full h-16 sm:flex-1 bg-white rounded-md"
             />
             
-            
-            <button
-              onClick={createNest}
-              value={text}
-              className=" bg-purple-300 w-50 m-3 h-16 cursor-pointer rounded-full font-bold py-3 shadow-lg">
-              Claim your Linknest
-            </button>
+            {isSignedIn ? (
+        <button
+          onClick={createNest}
+          className="bg-purple-300 w-50 m-3 h-16 cursor-pointer rounded-full font-bold py-3 shadow-lg"
+        >
+          Claim your Linknest
+        </button>
+      ) : (
+        <SignUpButton mode="modal" onClick={createNest}>
+          <button
+            className="bg-purple-300 w-50 m-3 h-16 cursor-pointer rounded-full font-bold py-3 shadow-lg"
+          >
+            Claim your Linknest
+          </button>
+        </SignUpButton>
+      )}
             
             
           </div>

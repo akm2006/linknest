@@ -1,6 +1,5 @@
 "use client";
 import { React, useState } from "react";
-import Image from "next/image";
 import FloatingCard from "@/components/FloatingCard";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaYoutube, FaSpotify, FaSpinner } from "react-icons/fa";
@@ -8,11 +7,22 @@ import { ToastContainer, toast } from "react-toastify";
 import { useSearchParams } from "next/navigation";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { Inter } from "next/font/google";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 
 const inter = Inter({ subsets: ["latin"] });
 const Generate = () => {
   const searchParams = useSearchParams();
+const { user } = useUser();
+const router = useRouter();
 
+useEffect(() => {
+  if (user === null) {
+    router.push("/sign-in");
+  }
+}, [user]);
   const [handle, sethandle] = useState(searchParams.get("handle") ?? "");
   const [pic, setpic] = useState("");
   const [links, setlinks] = useState([{ link: "", linktext: "" }]);

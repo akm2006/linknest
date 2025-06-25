@@ -3,8 +3,15 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HiMiniBars3 } from "react-icons/hi2";
 import { Sling as Hamburger } from 'hamburger-react';
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
 const pathname = usePathname()
@@ -88,27 +95,31 @@ if (!showNavbar) return null;
           </ul>
         </div>
         <div className="flex items-center gap-3 sm:text-base text-xs sm:font-bold font-medium sm:mx-6">
-          <Link href="/">
-            <button className="bg-gray-200 hover:bg-gray-300 transition ease-in-out duration-300 rounded-xl sm:px-8 sm:py-5 px-4 py-3 shadow-lg">
-              Log in
-            </button>
-          </Link>
-          <Link href="/">
-            <button className="bg-gray-800 hover:bg-gray-700 transition ease-in-out duration-300 text-white rounded-full sm:px-8 sm:py-5 px-4 py-3 shadow-lg">
-              Sign up free
-            </button>
-          </Link>
+      
+
+      <SignedOut>
+ 
+    <SignInButton mode="modal">
+      <button className="bg-gray-200 hover:bg-gray-300 transition ease-in-out duration-300 rounded-xl sm:px-8 sm:py-5 px-4 py-3 shadow-lg">
+        Log in
+      </button>
+    </SignInButton>
+
+    <SignUpButton mode="modal">
+      <button className="bg-gray-800 hover:bg-gray-700 transition ease-in-out duration-300 text-white rounded-full sm:px-8 sm:py-5 px-4 py-3 shadow-lg">
+        Sign up free
+      </button>
+    </SignUpButton>
+  </SignedOut>
+  <SignedIn>
+    <UserButton afterSignOutUrl="/" />
+  </SignedIn>
 
          <div className={`block ${isOpen? "bg-[#d2e823]":"bg-transparent"} rounded-full  sm:hidden`}>
           <Hamburger toggled={isOpen} toggle={setIsOpen} size={20} /></div>
 
 
         </div>
-
-
-         
-                   
-
       </nav>
        <div className={`bg-white fixed z-2 h-screen w-screen pt-[40%] sm:hidden scroll-0 flex transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
         }`}> 
