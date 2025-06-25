@@ -5,22 +5,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Sling as Hamburger } from 'hamburger-react';
 import {
+  useUser,
   ClerkProvider,
   SignInButton,
   SignUpButton,
   SignedIn,
   SignedOut,
   UserButton,
-} from '@clerk/nextjs'
+} from '@clerk/nextjs';
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
 const pathname = usePathname()
-const showNavbar = ["/" ,"/generate"].includes(pathname)
+const showNavbar = ["/" ,"/generate", "/linknest/admin"].includes(pathname)
 const [isOpen, setIsOpen] = useState(false);
+const { user } = useUser();
 
-const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
 
   useEffect(() => {
   if (isOpen) {
@@ -112,7 +111,10 @@ if (!showNavbar) return null;
     </SignUpButton>
   </SignedOut>
   <SignedIn>
-    <UserButton afterSignOutUrl="/" />
+    
+    <UserButton />
+    <p> {user?.username} </p>
+    
   </SignedIn>
 
          <div className={`block ${isOpen? "bg-[#d2e823]":"bg-transparent"} rounded-full  sm:hidden`}>

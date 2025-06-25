@@ -12,6 +12,8 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 
+
+
 const inter = Inter({ subsets: ["latin"] });
 const Generate = () => {
   const searchParams = useSearchParams();
@@ -39,7 +41,7 @@ useEffect(() => {
     const file = e.target.files[0];
     if (!file) return;
 
-    setIsUploading(true); // show loading if needed
+    setIsUploading(true);
 
     const formData = new FormData();
     formData.append("file", file);
@@ -95,6 +97,9 @@ useEffect(() => {
       pic: pic,
       links: links,
       desc: desc,
+      email: user?.primaryEmailAddress?.emailAddress,
+      clerkId: user?.id, // optional but useful
+      name: user?.fullName,
     };
 
     console.log("Submitting payload:", payload);
@@ -127,6 +132,8 @@ useEffect(() => {
       toast("Error adding link");
       console.error("Failed to add link:", err);
     }
+
+
   };
 
   return (
