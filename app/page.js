@@ -15,7 +15,7 @@ export default function Home() {
       const res = await fetch(`/api/getLinknest?clerkId=${user.id}`);
       const data = await res.json();
       if (data.success && data.result) {
-        router.replace("/linknest/admin");
+        router.replace("/admin");
       }
     };
 

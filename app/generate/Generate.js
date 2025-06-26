@@ -221,7 +221,7 @@ useEffect(() => {
                   "Change Image"
                 ) : (
                   "Upload Image"
-                )}{" "}
+                )}
               </label>
               <input
                 id="pic-upload"

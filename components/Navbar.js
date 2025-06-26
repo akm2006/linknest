@@ -16,7 +16,7 @@ import {
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
 const pathname = usePathname()
-const showNavbar = ["/" ,"/generate", "/linknest/admin"].includes(pathname)
+const showNavbar = ["/" ,"/generate", "/admin"].includes(pathname)
 const [isOpen, setIsOpen] = useState(false);
 const { user } = useUser();
 
